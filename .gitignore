@@ -1,0 +1,51 @@
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+.eggs/
+*.egg
+
+# Virtual environments
+.venv/
+venv/
+
+# Data
+lancedb/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Coverage
+htmlcov/
+.coverage
+.coverage.*
+
+# mypy
+.mypy_cache/
+
+# pytest
+.pytest_cache/
+tests/transcripts/
+
+# ruff
+.ruff_cache/
+
+# Environment
+.env
+.envrc
+
+# LaTeX
+*.aux
+*.log
+*.out
+*.toc
+*.pdf
+!prfaq.pdf
+
+# OS
+.DS_Store
