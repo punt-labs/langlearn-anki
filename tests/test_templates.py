@@ -15,6 +15,39 @@ def test_template_repository_unknown_language() -> None:
         TemplateRepository("xx")
 
 
+def test_template_repository_requires_card_type() -> None:
+    repo = TemplateRepository("de")
+    with pytest.raises(ValueError, match="card_type is required"):
+        repo.get_template_files("   ")
+
+
+def test_template_repository_missing_card_type() -> None:
+    repo = TemplateRepository("de")
+    with pytest.raises(FileNotFoundError, match="Template file not found"):
+        repo.get_template_files("does_not_exist")
+
+
+def test_template_repository_cache() -> None:
+    repo = TemplateRepository("de")
+    first = repo.get_template_files("noun")
+    second = repo.get_template_files("noun")
+    assert first is second
+
+
+def test_template_repository_language_alias() -> None:
+    repo = TemplateRepository("german")
+    assert "noun" in repo.list_card_types()
+
+
+def test_template_repository_get_card_template() -> None:
+    repo = TemplateRepository("de")
+    card = repo.get_card_template("noun")
+    assert card.name == "Card 1"
+    assert card.front_html
+    assert card.back_html
+    assert card.css
+
+
 def test_template_repository_loads_german_templates() -> None:
     repo = TemplateRepository("de")
     template_files = repo.get_template_files("noun")
