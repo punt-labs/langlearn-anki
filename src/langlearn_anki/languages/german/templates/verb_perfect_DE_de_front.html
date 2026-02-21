@@ -1,0 +1,96 @@
+{{#Image}}<div class="image-container">{{Image}}</div>{{/Image}}
+
+<div class="part-of-speech">Perfect Tense Conjugation</div>
+
+<div class="verb-prompt">
+    <div class="auxiliary-selection">
+        <div class="challenge-instruction">Which auxiliary verb does this take?</div>
+        <div class="auxiliary-options">
+            <div class="aux-option haben">haben</div>
+            <div class="aux-option sein">sein</div>
+        </div>
+    </div>
+    
+    <div class="conjugation-challenge">
+        <div class="challenge-instruction">Complete the perfect tense conjugations:</div>
+        <div class="perfect-grid">
+            <div class="perfect-item">
+                <span class="pronoun">ich</span>
+                <span class="auxiliary-blank">___</span>
+                <span class="participle-hint">+ past participle</span>
+            </div>
+            <div class="perfect-item">
+                <span class="pronoun">du</span>
+                <span class="auxiliary-blank">___</span>
+                <span class="participle-hint">+ past participle</span>
+            </div>
+            <div class="perfect-item">
+                <span class="pronoun">er/sie/es</span>
+                <span class="auxiliary-blank">___</span>
+                <span class="participle-hint">+ past participle</span>
+            </div>
+            <div class="perfect-item">
+                <span class="pronoun">wir</span>
+                <span class="auxiliary-blank">___</span>
+                <span class="participle-hint">+ past participle</span>
+            </div>
+            <div class="perfect-item">
+                <span class="pronoun">ihr</span>
+                <span class="auxiliary-blank">___</span>
+                <span class="participle-hint">+ past participle</span>
+            </div>
+            <div class="perfect-item">
+                <span class="pronoun">sie</span>
+                <span class="auxiliary-blank">___</span>
+                <span class="participle-hint">+ past participle</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="hint-container">
+    <button class="hint-button" onclick="showHint()">💡 Show Meaning</button>
+    <div id="hint-content" class="hint-content hidden">
+        <strong>English:</strong> {{Meaning}}
+    </div>
+</div>
+
+<div class="grammar-tip">
+    <button class="tip-button" onclick="showGrammarTip()">📚 Perfect Tense Help</button>
+    <div id="grammar-tip-content" class="tip-content hidden">
+        <strong>Perfect Tense Formation:</strong><br>
+        • Use <strong>haben</strong> for most verbs<br>
+        • Use <strong>sein</strong> for motion verbs (gehen, fahren) and change of state (werden)<br>
+        • Past participle usually ends in <em>-t</em> (regular) or <em>-en</em> (irregular)
+    </div>
+</div>
+
+<script>
+function showHint() {
+    var hint = document.getElementById('hint-content');
+    var button = document.querySelector('.hint-button');
+    hint.classList.remove('hidden');
+    button.style.display = 'none';
+}
+
+function showGrammarTip() {
+    var tip = document.getElementById('grammar-tip-content');
+    var button = document.querySelector('.tip-button');
+    tip.classList.remove('hidden');
+    button.style.display = 'none';
+}
+
+// Interactive auxiliary selection
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.aux-option').forEach(function(option) {
+        option.addEventListener('click', function() {
+            // Remove previous selection
+            document.querySelectorAll('.aux-option').forEach(function(opt) {
+                opt.classList.remove('selected');
+            });
+            // Add selection to clicked option
+            this.classList.add('selected');
+        });
+    });
+});
+</script>

@@ -1,0 +1,352 @@
+.infinitive {
+    font-size: 1.3em;
+    color: #0066cc;
+    font-weight: bold;
+}
+
+.auxiliary-selection {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.auxiliary-options {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin: 15px 0;
+}
+
+.aux-option {
+    padding: 10px 20px;
+    border: 2px solid #007bff;
+    border-radius: 25px;
+    background-color: white;
+    color: #007bff;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1.1em;
+    transition: all 0.3s ease;
+}
+
+.aux-option:hover {
+    background-color: #007bff;
+    color: white;
+    transform: translateY(-2px);
+}
+
+.aux-option.selected {
+    background-color: #28a745;
+    border-color: #28a745;
+    color: white;
+}
+
+.challenge-instruction {
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #333;
+    text-align: center;
+}
+
+.perfect-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.perfect-item {
+    display: grid;
+    grid-template-columns: 100px 80px 1fr;
+    align-items: center;
+    padding: 12px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    background-color: #f8f9fa;
+    gap: 15px;
+}
+
+.pronoun {
+    font-weight: bold;
+    color: #495057;
+    text-align: center;
+}
+
+.auxiliary-blank {
+    color: #6c757d;
+    font-style: italic;
+    font-size: 1.1em;
+    text-align: center;
+    border-bottom: 2px dashed #6c757d;
+    padding: 4px 8px;
+    background-color: white;
+    border-radius: 4px;
+}
+
+.participle-hint {
+    font-size: 0.85em;
+    color: #6c757d;
+    font-style: italic;
+}
+
+.hint-container, .grammar-tip {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.hint-button, .tip-button {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.9em;
+    margin: 5px;
+}
+
+.hint-button:hover, .tip-button:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+
+.hint-content, .tip-content {
+    margin-top: 10px;
+    padding: 12px;
+    background-color: #e3f2fd;
+    border-radius: 8px;
+    border-left: 4px solid #2196f3;
+    text-align: left;
+}
+
+.hidden {
+    display: none;
+}
+
+@media (max-width: 480px) {
+    .perfect-item {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 8px;
+    }
+    
+    .auxiliary-options {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+.infinitive {
+    font-size: 1.4em;
+    color: #0066cc;
+    font-weight: bold;
+}
+
+.meaning {
+    font-size: 0.9em;
+    color: #666;
+    font-style: italic;
+    margin-top: 4px;
+}
+
+.auxiliary-info {
+    margin: 20px 0;
+    padding: 15px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 12px;
+    color: white;
+    text-align: center;
+}
+
+.auxiliary-announcement {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+}
+
+.auxiliary-verb {
+    font-size: 1.3em;
+    font-weight: bold;
+    padding: 4px 12px;
+    border-radius: 20px;
+    background-color: rgba(255,255,255,0.2);
+}
+
+.auxiliary-verb.haben {
+    background-color: rgba(40, 167, 69, 0.8);
+}
+
+.auxiliary-verb.sein {
+    background-color: rgba(220, 53, 69, 0.8);
+}
+
+.auxiliary-label {
+    font-size: 1.1em;
+    font-weight: 500;
+}
+
+.auxiliary-reason {
+    font-size: 0.9em;
+    opacity: 0.9;
+}
+
+.conjugation-table {
+    margin: 20px 0;
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.tense-header {
+    text-align: center;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #495057;
+    margin-bottom: 15px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #e9ecef;
+}
+
+.conjugation-grid {
+    display: grid;
+    gap: 8px;
+}
+
+.conjugation-row {
+    display: grid;
+    grid-template-columns: 100px 1fr 40px;
+    align-items: center;
+    padding: 8px 12px;
+    border-radius: 6px;
+    background-color: #f8f9fa;
+    border-left: 3px solid #6f42c1;
+}
+
+.pronoun {
+    font-weight: bold;
+    color: #495057;
+    font-size: 0.95em;
+}
+
+.conjugated-form {
+    font-size: 1em;
+    color: #6f42c1;
+    font-weight: bold;
+}
+
+.phonetic {
+    text-align: center;
+    font-size: 0.9em;
+    cursor: pointer;
+}
+
+.participle-formation {
+    margin: 20px 0;
+    padding: 15px;
+    background-color: #fff3cd;
+    border-radius: 8px;
+    border-left: 4px solid #ffc107;
+}
+
+.formation-header {
+    font-weight: bold;
+    color: #856404;
+    margin-bottom: 10px;
+    font-size: 1em;
+}
+
+.formation-rule {
+    padding: 8px 12px;
+    border-radius: 6px;
+    margin: 5px 0;
+}
+
+.formation-rule.regular {
+    background-color: rgba(40, 167, 69, 0.1);
+    border-left: 3px solid #28a745;
+}
+
+.formation-rule.irregular {
+    background-color: rgba(220, 53, 69, 0.1);
+    border-left: 3px solid #dc3545;
+}
+
+.formation-example {
+    font-size: 0.9em;
+    color: #6c757d;
+    margin-top: 4px;
+}
+
+.example-section {
+    margin: 20px 0;
+    padding: 15px;
+    background-color: #e8f5e8;
+    border-radius: 8px;
+    border-left: 4px solid #28a745;
+}
+
+.example-header {
+    font-weight: bold;
+    color: #155724;
+    margin-bottom: 8px;
+    font-size: 0.9em;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.example-sentence {
+    font-size: 1.1em;
+    color: #155724;
+    line-height: 1.4;
+}
+
+.example-translation {
+    margin-top: 8px;
+    font-size: 0.9em;
+    color: #6c757d;
+}
+
+.usage-tip {
+    margin: 20px 0;
+    padding: 12px;
+    background-color: #d1ecf1;
+    border-radius: 8px;
+    border-left: 4px solid #17a2b8;
+}
+
+.tip-header {
+    font-weight: bold;
+    color: #0c5460;
+    margin-bottom: 6px;
+}
+
+.tip-content {
+    color: #0c5460;
+    font-size: 0.95em;
+    line-height: 1.4;
+}
+
+.inline-audio {
+    margin-left: 8px;
+    cursor: pointer;
+    color: #007bff;
+}
+
+.inline-audio:hover {
+    color: #0056b3;
+}
+
+@media (max-width: 480px) {
+    .conjugation-row {
+        grid-template-columns: 80px 1fr 30px;
+        padding: 6px 8px;
+    }
+    
+    .auxiliary-announcement {
+        flex-direction: column;
+        gap: 5px;
+    }
+}

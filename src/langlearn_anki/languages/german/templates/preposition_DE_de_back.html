@@ -1,0 +1,41 @@
+{{#Image}}<div class="image-container">{{Image}}</div>{{/Image}}
+
+<div class="preposition-info">
+    <div class="preposition-with-audio">
+        <span class="german">{{Preposition}}</span>
+        {{#WordAudio}}<span class="inline-audio">🔊 {{WordAudio}}</span>{{/WordAudio}}
+    </div>
+    
+    <div class="translation">{{English}}</div>
+    
+    <div class="case-info">
+        <div class="case-label">Erforderlicher Fall:</div>
+        <div class="case-value">{{Case}}</div>
+    </div>
+</div>
+
+<div class="examples-section">
+    <div class="example-with-audio">
+        <span class="example-item">{{Example1}}</span>
+        {{#Example1Audio}}<span class="inline-audio">🔊 {{Example1Audio}}</span>{{/Example1Audio}}
+    </div>
+
+    <div class="example-with-audio">
+        <span class="example-item">{{Example2}}</span>
+        {{#Example2Audio}}<span class="inline-audio">🔊 {{Example2Audio}}</span>{{/Example2Audio}}
+    </div>
+</div>
+
+<div class="hint-container">
+    <button class="hint-button" onclick="showHint()">💡 Tipp</button>
+    <div id="hint-content" class="hint-content hidden">{{English}}</div>
+</div>
+
+<script>
+function showHint() {
+    var hint = document.getElementById('hint-content');
+    var button = document.querySelector('.hint-button');
+    hint.classList.remove('hidden');
+    button.style.display = 'none';
+}
+</script>

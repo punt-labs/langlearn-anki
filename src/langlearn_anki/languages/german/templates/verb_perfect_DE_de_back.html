@@ -1,0 +1,98 @@
+{{#Image}}<div class="image-container">{{Image}}</div>{{/Image}}
+
+<div class="verb-conjugation">
+    <div class="infinitive-with-audio">
+        <span class="german infinitive">{{Infinitive}}</span>
+        {{#WordAudio}}<span class="inline-audio">🔊 {{WordAudio}}</span>{{/WordAudio}}
+        <div class="meaning">{{Meaning}}</div>
+    </div>
+    
+    <div class="auxiliary-info">
+        <div class="auxiliary-announcement">
+            <span class="auxiliary-verb {{Auxiliary}}">{{Auxiliary}}</span>
+            <span class="auxiliary-label">+ past participle</span>
+        </div>
+        <div class="auxiliary-reason">
+            <strong>Auxiliary:</strong> {{Auxiliary}} (most verbs use "haben"; motion or change uses "sein")
+        </div>
+    </div>
+    
+    <div class="conjugation-table">
+        <div class="tense-header">Perfect Tense (Perfekt)</div>
+        <div class="conjugation-grid">
+            <div class="conjugation-row">
+                <span class="pronoun">ich</span>
+                <span class="conjugated-form">{{Ich}}</span>
+                <span class="phonetic">{{#IchAudio}}🔊{{/IchAudio}}</span>
+            </div>
+            <div class="conjugation-row">
+                <span class="pronoun">du</span>
+                <span class="conjugated-form">{{Du}}</span>
+                <span class="phonetic">{{#DuAudio}}🔊{{/DuAudio}}</span>
+            </div>
+            <div class="conjugation-row">
+                <span class="pronoun">er/sie/es</span>
+                <span class="conjugated-form">{{Er}}</span>
+                <span class="phonetic">{{#ErAudio}}🔊{{/ErAudio}}</span>
+            </div>
+            <div class="conjugation-row">
+                <span class="pronoun">wir</span>
+                <span class="conjugated-form">{{Wir}}</span>
+                <span class="phonetic">{{#WirAudio}}🔊{{/WirAudio}}</span>
+            </div>
+            <div class="conjugation-row">
+                <span class="pronoun">ihr</span>
+                <span class="conjugated-form">{{Ihr}}</span>
+                <span class="phonetic">{{#IhrAudio}}🔊{{/IhrAudio}}</span>
+            </div>
+            <div class="conjugation-row">
+                <span class="pronoun">sie</span>
+                <span class="conjugated-form">{{Sie}}</span>
+                <span class="phonetic">{{#SieAudio}}🔊{{/SieAudio}}</span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="participle-formation">
+        <div class="formation-header">Past Participle Formation:</div>
+        <div class="formation-info">
+            {{#Classification}}
+            <div class="formation-rule">
+                <strong>{{Classification}}:</strong> Regular verbs use ge- + stem + -t; irregular verbs use ge- + changed stem + -en.
+            </div>
+            {{/Classification}}
+        </div>
+    </div>
+</div>
+
+<div class="example-section">
+    <div class="example-header">Perfect Tense in Context:</div>
+    <div class="example-with-audio">
+        <span class="example-sentence">{{Example}}</span>
+        {{#ExampleAudio}}<span class="inline-audio">🔊 {{ExampleAudio}}</span>{{/ExampleAudio}}
+    </div>
+    <div class="example-translation">
+        <em>This expresses a completed action in the past</em>
+    </div>
+</div>
+
+<div class="usage-tip">
+    <div class="tip-header">💡 Usage Tip:</div>
+    <div class="tip-content">
+        Perfect tense is the <strong>most common past tense</strong> in spoken German. 
+        Use it for completed actions, just like "I have done" in English.
+    </div>
+</div>
+
+<script>
+// Auto-play functionality for pronunciation
+document.addEventListener('DOMContentLoaded', function() {
+    // Add click handlers for audio
+    document.querySelectorAll('.phonetic').forEach(function(element) {
+        if (element.textContent.includes('🔊')) {
+            element.style.cursor = 'pointer';
+            element.style.color = '#007bff';
+        }
+    });
+});
+</script>

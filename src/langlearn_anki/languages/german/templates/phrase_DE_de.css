@@ -1,0 +1,154 @@
+/* Base card styling */
+.card {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f8f9fa !important;
+    padding: 20px;
+    color: #333 !important;
+}
+
+/* Override Anki's dark mode background while preserving specific text colors */
+.card, .card * {
+    background-color: #f8f9fa !important;
+}
+.card {
+    color: #333 !important;
+}
+
+.german {
+    font-size: 28px;
+    font-weight: bold;
+    color: #2c5aa0;
+    margin-bottom: 15px;
+}
+
+.part-of-speech {
+    font-size: 16px;
+    color: #666;
+    font-style: italic;
+    margin: 20px 0;
+    padding: 8px 16px;
+    background: #f8f9fa;
+    border-radius: 20px;
+    border: 1px solid #ddd;
+    display: inline-block;
+}
+
+/* Image styling */
+.image-container {
+    margin: 10px 0;
+}
+
+img {
+    max-width: 260px;
+    max-height: 180px;
+    border-radius: 8px;
+    margin: 10px 0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Front-side prompt and hint */
+.phrase-prompt {
+    background: #e8f4fd;
+    border: 2px solid #2c5aa0;
+    border-radius: 10px;
+    padding: 16px;
+    margin-bottom: 16px;
+}
+
+.expectation {
+    font-size: 18px;
+    font-weight: bold;
+    color: #0ea5e9;
+}
+
+.hint-container {
+    margin-top: 10px;
+}
+
+.hint-button {
+    background: #4CAF50 !important;
+    color: white !important;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.hint-button:hover {
+    background: #45a049 !important;
+}
+
+.hint-content {
+    font-size: 18px;
+    color: #2c5aa0;
+    font-weight: bold;
+    margin-top: 15px;
+    padding: 15px;
+    background: #e8f4fd;
+    border-radius: 10px;
+    border: 2px solid #2c5aa0;
+}
+
+.hidden { display: none; }
+
+/* Phrase info box - match noun styling exactly */
+.phrase-info {
+    background: #f8f9fa;
+    border: 2px solid #2c5aa0;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 20px;
+    display: inline-block;
+}
+
+.word-with-audio {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.translation {
+    font-size: 18px;
+    color: #666;
+    font-style: italic;
+    margin: 12px 0;
+}
+
+.context-block {
+    text-align: left;
+    margin: 10px auto;
+    max-width: 420px;
+}
+
+.context-label {
+    font-weight: bold;
+    color: #2c5aa0;
+    margin-bottom: 6px;
+}
+
+.context-value {
+    color: #666;
+    font-size: 16px;
+}
+
+.related-words {
+    font-size: 16px;
+    color: #666;
+    margin: 15px 0;
+    padding: 10px;
+    background: #f0f4f8;
+    border-radius: 5px;
+    text-align: left;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.inline-audio {
+    font-size: 18px;
+}
