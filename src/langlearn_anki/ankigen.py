@@ -95,7 +95,7 @@ def load_cards(path: Path) -> list[CardSpec]:
         raise ValueError(msg)
 
     cards: list[CardSpec] = []
-    raw_list = cast("list[Any]", raw_obj)
+    raw_list = cast("list[object]", raw_obj)
     for idx, item in enumerate(raw_list):
         if not isinstance(item, dict):
             msg = f"cards.json entry {idx} must be an object"
@@ -243,5 +243,17 @@ def build_deck(request: DeckRequest) -> DeckResult:
         output_path=output_path,
         cards_exported=len(cards),
         media_used=len(used_media),
-        metadata={},
+        metadata=request.metadata,
     )
+
+
+def result_to_dict(result: DeckResult) -> dict[str, object]:
+    """Serialize DeckResult to a dict suitable for CLI/MCP output."""
+    payload: dict[str, object] = {
+        "output_path": str(result.output_path),
+        "cards_exported": result.cards_exported,
+        "media_used": result.media_used,
+    }
+    if result.metadata:
+        payload.update(result.metadata)
+    return payload
