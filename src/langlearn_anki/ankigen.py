@@ -1,13 +1,18 @@
 from __future__ import annotations
 
 import json
-import tempfile
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, cast
 
-import anki.collection
 from langlearn_types import DeckRequest, DeckResult, MediaManifest
+
+from langlearn_anki.infrastructure import (
+    AnkiBackend,
+    DeckManager,
+    MediaManager,
+    basic_note_type,
+)
 
 
 @dataclass(frozen=True)
@@ -178,72 +183,63 @@ def build_deck(request: DeckRequest) -> DeckResult:
 
     output_path = request.output_path or request.data_dir / f"{request.deck}.apkg"
 
-    with tempfile.TemporaryDirectory() as tmp_dir:
-        collection_path = Path(tmp_dir) / "collection.anki2"
-        col = anki.collection.Collection(str(collection_path))
-        try:
-            model = col.models.by_name("Basic")
-            if model is None:
-                msg = "Basic notetype not available in collection"
+    backend = AnkiBackend(request.deck)
+    deck_manager = DeckManager(backend)
+    media_manager = MediaManager(backend)
+
+    try:
+        note_type_id = deck_manager.create_note_type(basic_note_type())
+
+        audio_files: dict[str, str] = {}
+        image_files: dict[str, str] = {}
+
+        for audio_id, path in media.audio.items():
+            if not path.exists():
+                msg = f"audio file missing: {path}"
                 raise ValueError(msg)
+            media_file = media_manager.add_media_file(str(path), media_type="audio")
+            audio_files[audio_id] = media_file.reference
 
-            deck_id = col.decks.id(request.deck)
-            if deck_id is None:
-                msg = f"failed to create deck: {request.deck}"
+        for image_id, path in media.images.items():
+            if not path.exists():
+                msg = f"image file missing: {path}"
                 raise ValueError(msg)
-            col.decks.select(deck_id)
+            media_file = media_manager.add_media_file(str(path), media_type="image")
+            image_files[image_id] = media_file.reference
 
-            audio_files: dict[str, str] = {}
-            image_files: dict[str, str] = {}
+        used_media: set[str] = set()
 
-            for audio_id, path in media.audio.items():
-                if path.exists():
-                    audio_files[audio_id] = col.media.add_file(str(path))
-                else:
-                    msg = f"audio file missing: {path}"
-                    raise ValueError(msg)
+        for card in cards:
+            front = card.front
+            if card.image_id:
+                image_reference = image_files[card.image_id]
+                front = f'{front}<br><img src="{image_reference}">'
+                used_media.add(card.image_id)
 
-            for image_id, path in media.images.items():
-                if path.exists():
-                    image_files[image_id] = col.media.add_file(str(path))
-                else:
-                    msg = f"image file missing: {path}"
-                    raise ValueError(msg)
+            back = card.back
+            if card.audio_id:
+                audio_reference = audio_files[card.audio_id]
+                back = f"{back}<br>{audio_reference}"
+                used_media.add(card.audio_id)
 
-            used_media: set[str] = set()
+            deck_manager.add_note(
+                note_type_id, [front, back], list(card.tags) if card.tags else None
+            )
 
-            for card in cards:
-                note = col.new_note(model)
-                front = card.front
-                if card.image_id:
-                    image_filename = image_files[card.image_id]
-                    front = f'{front}<br><img src="{image_filename}">'
-                    used_media.add(card.image_id)
+        deck_manager.export_deck(str(output_path))
+    finally:
+        backend.close()
 
-                back = card.back
-                if card.audio_id:
-                    audio_filename = audio_files[card.audio_id]
-                    back = f"{back}<br>[sound:{audio_filename}]"
-                    used_media.add(card.audio_id)
-
-                note.fields[0] = front
-                note.fields[1] = back
-                if card.tags:
-                    note.tags = list(card.tags)
-                col.add_note(note, deck_id)
-
-            import anki.exporting as exporting
-
-            exporter = exporting.AnkiPackageExporter(col)
-            exporter.exportInto(str(output_path))
-        finally:
-            col.close()
+    metadata_obj = getattr(request, "metadata", {})
+    metadata = (
+        cast("dict[str, str]", metadata_obj) if isinstance(metadata_obj, dict) else {}
+    )
 
     return DeckResult(
         output_path=output_path,
         cards_exported=len(cards),
         media_used=len(used_media),
-        metadata=request.metadata,
+        metadata=metadata,
     )
 
 
