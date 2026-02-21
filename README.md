@@ -22,6 +22,8 @@ uv tool install punt-langlearn-anki
 langlearn-anki --help
 langlearn-anki --json version
 langlearn-anki doctor
+langlearn-anki build --help
+langlearn-anki install
 langlearn-anki serve
 ```
 
