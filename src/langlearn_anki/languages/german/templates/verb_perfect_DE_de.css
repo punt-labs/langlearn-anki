@@ -217,7 +217,7 @@
 
 .conjugation-row {
     display: grid;
-    grid-template-columns: 100px 80px 1fr 40px;
+    grid-template-columns: 100px 1fr 40px;
     align-items: center;
     padding: 8px 12px;
     border-radius: 6px;
@@ -231,20 +231,10 @@
     font-size: 0.95em;
 }
 
-.auxiliary-form {
+.conjugated-form {
     font-size: 1em;
     color: #6f42c1;
     font-weight: bold;
-    text-align: center;
-}
-
-.participle {
-    font-size: 1.1em;
-    color: #dc3545;
-    font-weight: bold;
-    text-decoration: underline;
-    text-decoration-color: #dc3545;
-    text-decoration-thickness: 2px;
 }
 
 .phonetic {
@@ -351,7 +341,7 @@
 
 @media (max-width: 480px) {
     .conjugation-row {
-        grid-template-columns: 80px 60px 1fr 30px;
+        grid-template-columns: 80px 1fr 30px;
         padding: 6px 8px;
     }
     

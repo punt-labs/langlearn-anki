@@ -35,6 +35,29 @@
     display: inline-block;
 }
 
+.word-with-audio {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.verb-forms {
+    background: #f8f9fa;
+    border: 2px solid #2c5aa0;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 20px;
+    display: inline-block;
+}
+
+.pronoun {
+    font-weight: bold;
+    color: #666;
+    font-size: 16px;
+}
+
 /* Image styling */
 .image-container {
     margin: 10px 0;

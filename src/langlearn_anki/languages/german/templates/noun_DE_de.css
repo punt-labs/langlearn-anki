@@ -10,9 +10,6 @@
 .card, .card * {
     background-color: #f8f9fa !important;
 }
-.card {
-    color: #333 !important;
-}
 
 .german {
     font-size: 28px;

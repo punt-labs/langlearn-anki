@@ -192,6 +192,45 @@ img {
     border-left: 4px solid #2c5aa0;
 }
 
+.conjugation-header {
+    color: #2c5aa0;
+    font-size: 1.4em;
+    margin: 0 0 15px 0;
+    font-weight: 600;
+    text-align: center;
+    border-bottom: 2px solid #2c5aa0;
+    padding-bottom: 10px;
+    text-transform: capitalize;
+}
+
+.conjugation-grid {
+    display: grid;
+    gap: 8px;
+}
+
+.conjugation-row {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    align-items: center;
+    padding: 8px 12px;
+    background: #f8f9fa;
+    border-radius: 6px;
+    border-left: 4px solid #2c5aa0;
+    gap: 15px;
+}
+
+.pronoun {
+    font-weight: bold;
+    color: #666;
+    font-size: 16px;
+}
+
+.conjugated-form {
+    font-size: 18px;
+    font-weight: bold;
+    color: #2c5aa0;
+}
+
 .conjugation-table h3 {
     color: #2c5aa0;
     font-size: 1.4em;

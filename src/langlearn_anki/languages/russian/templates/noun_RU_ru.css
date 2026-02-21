@@ -9,6 +9,14 @@
     color: #333 !important;
 }
 
+/* Override Anki's dark mode background while preserving specific text colors */
+.card, .card * {
+    background-color: #f8f9fa !important;
+}
+.card {
+    color: #333 !important;
+}
+
 /* Primary content - Russian word */
 .russian {
     font-size: 28px;

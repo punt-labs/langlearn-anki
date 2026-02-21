@@ -12,14 +12,6 @@
   box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
-/* Override Anki's dark mode background while preserving specific text colors */
-.card * {
-    background-color: #f8f9fa !important;
-}
-.card {
-    color: #333 !important;
-}
-
 /* Hangul Text Styling */
 .hangul {
   font-size: 3em;
