@@ -12,15 +12,9 @@
             <span class="auxiliary-verb {{Auxiliary}}">{{Auxiliary}}</span>
             <span class="auxiliary-label">+ past participle</span>
         </div>
-        {{#eq Auxiliary "sein"}}
         <div class="auxiliary-reason">
-            <strong>Why "sein"?</strong> Motion or change of state verb
+            <strong>Auxiliary:</strong> {{Auxiliary}} (most verbs use "haben"; motion or change uses "sein")
         </div>
-        {{else}}
-        <div class="auxiliary-reason">
-            <strong>Standard auxiliary:</strong> Most German verbs use "haben"
-        </div>
-        {{/eq}}
     </div>
     
     <div class="conjugation-table">
@@ -28,37 +22,37 @@
         <div class="conjugation-grid">
             <div class="conjugation-row">
                 <span class="pronoun">ich</span>
-                <span class="auxiliary-form">{{#eq Auxiliary "haben"}}habe{{else}}bin{{/eq}}</span>
+                <span class="auxiliary-form">{{Auxiliary}}</span>
                 <span class="participle">{{Sie}}</span>
                 <span class="phonetic">{{#IchAudio}}🔊{{/IchAudio}}</span>
             </div>
             <div class="conjugation-row">
                 <span class="pronoun">du</span>
-                <span class="auxiliary-form">{{#eq Auxiliary "haben"}}hast{{else}}bist{{/eq}}</span>
+                <span class="auxiliary-form">{{Auxiliary}}</span>
                 <span class="participle">{{Sie}}</span>
                 <span class="phonetic">{{#DuAudio}}🔊{{/DuAudio}}</span>
             </div>
             <div class="conjugation-row">
                 <span class="pronoun">er/sie/es</span>
-                <span class="auxiliary-form">{{#eq Auxiliary "haben"}}hat{{else}}ist{{/eq}}</span>
+                <span class="auxiliary-form">{{Auxiliary}}</span>
                 <span class="participle">{{Sie}}</span>
                 <span class="phonetic">{{#ErAudio}}🔊{{/ErAudio}}</span>
             </div>
             <div class="conjugation-row">
                 <span class="pronoun">wir</span>
-                <span class="auxiliary-form">{{#eq Auxiliary "haben"}}haben{{else}}sind{{/eq}}</span>
+                <span class="auxiliary-form">{{Auxiliary}}</span>
                 <span class="participle">{{Sie}}</span>
                 <span class="phonetic">{{#WirAudio}}🔊{{/WirAudio}}</span>
             </div>
             <div class="conjugation-row">
                 <span class="pronoun">ihr</span>
-                <span class="auxiliary-form">{{#eq Auxiliary "haben"}}habt{{else}}seid{{/eq}}</span>
+                <span class="auxiliary-form">{{Auxiliary}}</span>
                 <span class="participle">{{Sie}}</span>
                 <span class="phonetic">{{#IhrAudio}}🔊{{/IhrAudio}}</span>
             </div>
             <div class="conjugation-row">
                 <span class="pronoun">sie</span>
-                <span class="auxiliary-form">{{#eq Auxiliary "haben"}}haben{{else}}sind{{/eq}}</span>
+                <span class="auxiliary-form">{{Auxiliary}}</span>
                 <span class="participle">{{Sie}}</span>
                 <span class="phonetic">{{#SieAudio}}🔊{{/SieAudio}}</span>
             </div>
@@ -69,17 +63,10 @@
         <div class="formation-header">Past Participle Formation:</div>
         <div class="formation-info">
             {{#Classification}}
-            {{#eq Classification "regelmäßig"}}
-            <div class="formation-rule regular">
-                <strong>Regular:</strong> ge- + stem + -t
+            <div class="formation-rule">
+                <strong>{{Classification}}:</strong> Regular verbs use ge- + stem + -t; irregular verbs use ge- + changed stem + -en.
                 <div class="formation-example">({{Infinitive}} → {{Sie}})</div>
             </div>
-            {{else}}
-            <div class="formation-rule irregular">
-                <strong>Irregular:</strong> ge- + changed stem + -en
-                <div class="formation-example">({{Infinitive}} → {{Sie}})</div>
-            </div>
-            {{/eq}}
             {{/Classification}}
         </div>
     </div>
