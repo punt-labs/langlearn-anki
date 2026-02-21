@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import logging
 import os
 import shutil
 import tempfile
@@ -15,6 +16,8 @@ from anki.exporting import AnkiPackageExporter
 from anki.models import NotetypeId
 
 from .base import CardTemplate, DeckBackend, MediaFile, NoteType
+
+logger = logging.getLogger(__name__)
 
 
 class AnkiBackend(DeckBackend):
@@ -36,17 +39,53 @@ class AnkiBackend(DeckBackend):
 
     def close(self) -> None:
         """Close the Anki collection and clean up temp files."""
-        if hasattr(self, "_collection"):
-            self._collection.close()
-        if hasattr(self, "_temp_dir") and os.path.exists(self._temp_dir):
-            shutil.rmtree(self._temp_dir, ignore_errors=True)
+        temp_dir = getattr(self, "_temp_dir", None)
+        try:
+            collection = getattr(self, "_collection", None)
+            if collection is not None:
+                collection.close()
+        finally:
+            if temp_dir and os.path.exists(temp_dir):
+                shutil.rmtree(temp_dir, ignore_errors=True)
 
     def __del__(self) -> None:
-        self.close()
+        try:
+            self.close()
+        except Exception:
+            logger.exception("Failed to close Anki backend cleanly")
 
     def create_note_type(self, note_type: NoteType) -> str:
         existing = self._collection.models.by_name(note_type.name)
         if existing is not None:
+            existing_fields = [
+                field.get("name", "") for field in existing.get("flds", [])
+            ]
+            if existing_fields != note_type.fields:
+                raise ValueError(
+                    "Existing note type fields do not match requested fields"
+                )
+
+            existing_templates = [
+                (
+                    template.get("name", ""),
+                    template.get("qfmt", ""),
+                    template.get("afmt", ""),
+                )
+                for template in existing.get("tmpls", [])
+            ]
+            expected_templates = [
+                (template.name, template.front_html, template.back_html)
+                for template in note_type.templates
+            ]
+            if existing_templates != expected_templates:
+                raise ValueError(
+                    "Existing note type templates do not match requested templates"
+                )
+
+            expected_css = note_type.templates[0].css if note_type.templates else ""
+            if existing.get("css", "") != expected_css:
+                raise ValueError("Existing note type CSS does not match")
+
             existing_id = existing.get("id")
             if isinstance(existing_id, int):
                 note_type_id = str(self._next_note_type_id)
@@ -104,6 +143,11 @@ class AnkiBackend(DeckBackend):
             raise ValueError(f"Note type not found: {anki_notetype_id}")
 
         note = self._collection.new_note(notetype)
+        if len(fields) > len(note.fields):
+            raise ValueError(
+                "Too many fields provided for note type "
+                f"{note_type_id}: expected {len(note.fields)}, got {len(fields)}"
+            )
         for i, value in enumerate(fields):
             if i < len(note.fields):
                 note.fields[i] = value
@@ -127,9 +171,11 @@ class AnkiBackend(DeckBackend):
             reference = normalized_filename
         elif media_type == "":
             extension = Path(filename).suffix.lower()
-            if extension == ".mp3":
+            audio_extensions = {".mp3", ".wav", ".ogg", ".m4a", ".flac"}
+            image_extensions = {".jpg", ".jpeg", ".png", ".gif", ".webp", ".svg"}
+            if extension in audio_extensions:
                 reference = f"[sound:{normalized_filename}]"
-            elif extension in {".jpg", ".jpeg", ".png"}:
+            elif extension in image_extensions:
                 reference = normalized_filename
             else:
                 raise ValueError(f"Cannot infer media type from extension: {extension}")
@@ -144,7 +190,7 @@ class AnkiBackend(DeckBackend):
 
     def export_deck(self, output_path: str) -> None:
         exporter = AnkiPackageExporter(self._collection)
-        exporter.did = self._deck_id
+        exporter.did = self._main_deck_id
         exporter_any = cast("Any", exporter)
         if hasattr(exporter_any, "include_media"):
             exporter_any.include_media = True
@@ -174,7 +220,8 @@ class AnkiBackend(DeckBackend):
                 stats["notes_count"] = self._collection.db.scalar(
                     "SELECT count() FROM notes"
                 )
-        except Exception:
+        except Exception as exc:
+            logger.warning("Failed to read Anki stats: %s", exc)
             stats["notes_count"] = 0
 
         return stats
