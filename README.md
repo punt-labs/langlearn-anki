@@ -3,11 +3,13 @@
 Anki deck generation for language learning (media in, decks out).
 
 ## Status (2026-02-21)
+
 - `build` consumes `cards.json` and `media.json` and exports a basic Front/Back deck.
 - Media is required and never generated inside this package.
 - Template library exists (German, Korean, Russian) but is not wired into deck generation yet.
 
 ## Roadmap
+
 See ROADMAP.md.
 
 ## Install
