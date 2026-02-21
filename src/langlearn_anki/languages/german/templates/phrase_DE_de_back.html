@@ -1,0 +1,35 @@
+{{#Image}}<div class="image-container">{{Image}}</div>{{/Image}}
+
+<div class="phrase-info">
+    <div class="word-with-audio">
+        <span class="german">{{Phrase}}</span>
+        {{#PhraseAudio}}<span class="inline-audio">🔊 {{PhraseAudio}}</span>{{/PhraseAudio}}
+    </div>
+</div>
+
+{{#Context}}
+<div class="context-block">
+    <div class="context-label">Kontext</div>
+    <div class="context-value">{{Context}}</div>
+</div>
+{{/Context}}
+
+{{#Related}}
+<div class="related-words">
+    <strong>Verwandte Ausdrücke:</strong> {{Related}}
+</div>
+{{/Related}}
+
+<div class="back-hint-container">
+    <button class="hint-button" onclick="showBackHint()">💡 Tipp</button>
+    <div id="back-hint-content" class="hint-content hidden">{{English}}</div>
+</div>
+
+<script>
+function showBackHint() {
+    var hint = document.getElementById('back-hint-content');
+    var button = document.querySelector('.back-hint-container .hint-button');
+    hint.classList.remove('hidden');
+    button.style.display = 'none';
+}
+</script>

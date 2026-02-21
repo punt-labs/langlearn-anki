@@ -1,0 +1,279 @@
+/* Base card styling */
+.card {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f8f9fa !important;
+    padding: 20px;
+    color: #333 !important;
+}
+
+/* Override Anki's dark mode background while preserving specific text colors */
+.card, .card * {
+    background-color: #f8f9fa !important;
+}
+.card {
+    color: #333 !important;
+}
+
+.german {
+    font-size: 32px;
+    font-weight: bold;
+    color: #2c5aa0;
+    margin-bottom: 15px;
+}
+
+.part-of-speech {
+    font-size: 16px;
+    color: #666;
+    font-style: italic;
+    margin: 20px auto;
+    padding: 8px 16px;
+    background: #f8f9fa;
+    border-radius: 20px;
+    border: 1px solid #ddd;
+    display: block;
+    text-align: center;
+    width: fit-content;
+}
+
+/* Image styling */
+.image-container {
+    margin: 10px 0;
+}
+
+img {
+    max-width: 250px;
+    max-height: 170px;
+    border-radius: 8px;
+    margin: 10px 0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Preposition-specific styling */
+.preposition-with-audio {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.preposition-prompt {
+    background: #f8f9fa;
+    border: 2px solid #2c5aa0;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 20px;
+    display: inline-block;
+}
+
+.case-challenge {
+    margin-top: 15px;
+}
+
+.challenge-label {
+    font-size: 18px;
+    font-weight: bold;
+    color: #2c5aa0;
+    margin-bottom: 15px;
+}
+
+.case-options {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.case-option {
+    background: #e8f4fd;
+    padding: 12px;
+    border-radius: 8px;
+    border: 2px dashed #2c5aa0;
+    font-size: 14px;
+    color: #444;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.case-option:hover {
+    background: #e8f0fe;
+}
+
+/* Back side preposition info */
+.preposition-info {
+    background: #f8f9fa;
+    border: 2px solid #2c5aa0;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 20px;
+    display: inline-block;
+}
+
+.translation {
+    font-size: 20px;
+    color: #666;
+    font-style: italic;
+    margin: 15px 0;
+}
+
+.case-info {
+    background: #f8f9fa;
+    border: 2px solid #2c5aa0;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 20px;
+    display: inline-block;
+}
+
+.case-label {
+    font-size: 14px;
+    font-weight: bold;
+    color: #666;
+    margin-bottom: 5px;
+}
+
+.case-value {
+    font-size: 24px;
+    font-weight: bold;
+    color: #2c5aa0;
+    text-transform: uppercase;
+}
+
+/* Examples section */
+.examples-section {
+    margin-top: 20px;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+
+.example-item {
+    margin: 15px 0;
+    padding: 10px;
+    background: #f0f4f8;
+    border-left: 3px solid #2c5aa0;
+    border-radius: 5px;
+}
+
+.example-with-audio {
+    margin: 15px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.example-text {
+    font-size: 16px;
+    color: #374151;
+    line-height: 1.5;
+    flex: 1;
+}
+
+/* Audio styling */
+.inline-audio {
+    font-size: 12px;
+    color: #666;
+    background: #f1f3f4;
+    padding: 4px 8px;
+    border-radius: 12px;
+    border: 1px solid #ddd;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    display: inline-block;
+    white-space: nowrap;
+}
+
+.inline-audio:hover {
+    background: #e8f0fe;
+    border-color: #2c5aa0;
+}
+
+/* Hint styling */
+.hint-container {
+    margin: 20px 0;
+}
+
+.back-hint-container {
+    margin: 25px 0 15px 0;
+}
+
+.hint-button {
+    background: #4CAF50 !important;
+    color: white !important;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.hint-button:hover {
+    background: #45a049 !important;
+}
+
+.hint-content {
+    font-size: 18px;
+    color: #2c5aa0;
+    font-weight: bold;
+    margin-top: 15px;
+    padding: 15px;
+    background: #e8f4fd;
+    border-radius: 10px;
+    border: 2px solid #2c5aa0;
+}
+
+.case-explanation {
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Responsive design for mobile */
+@media (max-width: 768px) {
+    .card {
+        padding: 15px;
+    }
+
+    .german {
+        font-size: 28px;
+    }
+    
+    img {
+        max-width: 200px;
+        max-height: 140px;
+    }
+    
+    .case-options {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+    
+    .case-option {
+        padding: 10px;
+        font-size: 13px;
+    }
+    
+    .preposition-info, .examples-section {
+        padding: 15px;
+    }
+    
+    .example-with-audio {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+    
+    .case-value {
+        font-size: 20px;
+    }
+}
+
+/* Dark mode support */
