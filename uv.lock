@@ -592,7 +592,7 @@ requires-dist = [
     { name = "anki", specifier = ">=25.7" },
     { name = "mcp", specifier = ">=1.0.0" },
     { name = "mypy", marker = "extra == 'dev'", specifier = ">=1.14.0" },
-    { name = "punt-langlearn-types", directory = "../langlearn-types" },
+    { name = "punt-langlearn-types", git = "https://github.com/punt-labs/langlearn-types?rev=7ca74011c014de62236373cf4d364ad2758e5f06" },
     { name = "pyright", marker = "extra == 'dev'", specifier = ">=1.1.390" },
     { name = "pytest", marker = "extra == 'dev'", specifier = ">=8.3.0" },
     { name = "rich", specifier = ">=13.7.0" },
@@ -604,24 +604,12 @@ provides-extras = ["dev"]
 [[package]]
 name = "punt-langlearn-types"
 version = "0.1.0"
-source = { directory = "../langlearn-types" }
+source = { git = "https://github.com/punt-labs/langlearn-types?rev=7ca74011c014de62236373cf4d364ad2758e5f06#7ca74011c014de62236373cf4d364ad2758e5f06" }
 dependencies = [
     { name = "mcp" },
     { name = "rich" },
     { name = "typer" },
 ]
-
-[package.metadata]
-requires-dist = [
-    { name = "mcp", specifier = ">=1.0.0" },
-    { name = "mypy", marker = "extra == 'dev'", specifier = ">=1.14.0" },
-    { name = "pyright", marker = "extra == 'dev'", specifier = ">=1.1.390" },
-    { name = "pytest", marker = "extra == 'dev'", specifier = ">=8.3.0" },
-    { name = "rich", specifier = ">=13.7.0" },
-    { name = "ruff", marker = "extra == 'dev'", specifier = ">=0.9.0" },
-    { name = "typer", specifier = ">=0.12.0" },
-]
-provides-extras = ["dev"]
 
 [[package]]
 name = "pycparser"
