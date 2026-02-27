@@ -3,7 +3,7 @@ name = "punt-langlearn-anki"
 version = "0.1.0"
 description = "Anki deck generation for language learning (media in, decks out)."
 readme = "README.md"
-authors = [{ name = "JF", email = "jmf@pobox.com" }]
+authors = [{ name = "Punt Labs" }]
 requires-python = ">=3.13"
 license = "MIT"
 dependencies = [
