@@ -54,3 +54,6 @@ tests/transcripts/
 .claude/
 !.claude/hooks/
 \!.claude/settings.json
+
+# Scratch/temp directory (TMPDIR set via .envrc)
+.tmp/
