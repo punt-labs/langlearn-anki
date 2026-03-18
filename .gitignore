@@ -57,3 +57,5 @@ tests/transcripts/
 
 # Scratch/temp directory (TMPDIR set via .envrc)
 .tmp/
+
+uv.toml
