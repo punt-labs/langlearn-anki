@@ -59,3 +59,4 @@ tests/transcripts/
 .tmp/
 
 uv.toml
+.envrc.local
