@@ -58,4 +58,10 @@ tests/transcripts/
 .tmp/
 
 uv.toml
-.envrc.local
+
+# Local-only files (machine-specific, per-user)
+*.local
+*.local.*
+
+# Punt CLAUDE.md template engine staging file
+CLAUDE.md.tmp
