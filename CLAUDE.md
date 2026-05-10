@@ -60,6 +60,24 @@ Do **not** merge immediately after creating a PR. Expect **2–6 review cycles**
 
 This project uses **beads** (`bd`) for issue tracking. If an issue discovered here affects multiple repos or requires a standards change, escalate to a [punt-kit bead](https://github.com/punt-labs/punt-kit) instead (see [bead placement scheme](../CLAUDE.md#where-to-create-a-bead)).
 
+## Ethos & Delegation
+
+Identity: `agent: claude` per `.punt-labs/ethos.yaml`. Sub-agent calls match ethos identity handles.
+
+This repo is a Python deck-builder/exporter that consumes the protocols from `langlearn-types`. Worker and evaluator must be distinct handles with no shared role. Claude is the leader, never the evaluator.
+
+| Task type | Worker | Evaluator |
+|-----------|--------|-----------|
+| Python deck logic, generation | `rmh` (Hettinger) | `gvr` (van Rossum) |
+| Anki template / `.apkg` format / SQLite | `rmh` | `gvr` |
+| CLI surface | `mdm` (McIlroy) | `rop` (Pike) |
+| MCP tool definitions | `rmh` | `mdm` |
+| Cross-repo contract with langlearn-types | `rmh` | `gvr` |
+| Card design / spaced repetition pedagogy | `claude` (leader) | `dna` (Norman) — UX cognition |
+| Infra / CI / release | `adb` (Lovelace) | `kth` (Hightower) |
+
+Use the `standard` pipeline for features, `coverage` for test gaps.
+
 ## Standards References
 
 - [Python](https://github.com/punt-labs/punt-kit/blob/main/standards/python.md)
