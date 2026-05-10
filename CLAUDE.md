@@ -64,14 +64,14 @@ This project uses **beads** (`bd`) for issue tracking. If an issue discovered he
 
 Identity: `agent: claude` per `.punt-labs/ethos.yaml`. Sub-agent calls match ethos identity handles.
 
-This repo is a Python deck-builder/exporter that consumes the protocols from `langlearn-types`. Worker and evaluator must be distinct handles with no shared role. Claude is the leader, never the evaluator.
+This repo is a Python deck-builder/exporter that consumes the protocols from `langlearn-types`. Within each row, the worker and evaluator must be distinct handles. Claude is the leader, never the evaluator.
 
 | Task type | Worker | Evaluator |
 |-----------|--------|-----------|
 | Python deck logic, generation | `rmh` (Hettinger) | `gvr` (van Rossum) |
 | Anki template / `.apkg` format / SQLite | `rmh` | `gvr` |
 | CLI surface | `mdm` (McIlroy) | `rop` (Pike) |
-| MCP tool definitions | `rmh` | `mdm` |
+| MCP tool definitions | `rmh` | `rop` (Pike) — Unix/CLI surface eye |
 | Cross-repo contract with langlearn-types | `rmh` | `gvr` |
 | Card design / spaced repetition pedagogy | `claude` (leader) | `dna` (Norman) — UX cognition |
 | Infra / CI / release | `adb` (Lovelace) | `kth` (Hightower) |
