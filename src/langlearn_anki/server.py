@@ -3,7 +3,7 @@ from __future__ import annotations
 from pathlib import Path
 
 from langlearn_types import DeckRequest
-from mcp.server.fastmcp import FastMCP
+from mcp.server.mcpserver import MCPServer
 
 from langlearn_anki import __version__
 from langlearn_anki.ankigen import (
@@ -12,8 +12,7 @@ from langlearn_anki.ankigen import (
     result_to_dict,
 )
 
-mcp = FastMCP("langlearn-anki")
-mcp._mcp_server.version = __version__  # pyright: ignore[reportPrivateUsage]
+mcp = MCPServer("langlearn-anki", version=__version__)
 
 
 @mcp.tool()
