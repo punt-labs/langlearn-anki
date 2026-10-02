@@ -2,6 +2,14 @@
 
 ## [Unreleased]
 
+### Changed
+
+- Migrate MCP server from `FastMCP` (mcp 1.x) to `MCPServer` (mcp 2.x).
+  The `mcp.server.fastmcp.FastMCP` entry point was removed in mcp 2.0;
+  the server now constructs `MCPServer(name, version=...)` and no longer
+  touches the removed private `_mcp_server.version` attribute. Tool
+  decorators and `run()` are unchanged.
+
 ### Fixed
 
 - Action pin comments now state the version actually pinned. The SHA is
