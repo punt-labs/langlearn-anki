@@ -12,6 +12,9 @@
 
 ### Fixed
 
+- Require `mcp>=2`: the server imports `mcp.server.mcpserver.MCPServer`
+  (mcp 2.x only), but the constraint still permitted mcp 1.x, so a resolver
+  could install an incompatible 1.x and break the import at runtime.
 - Action pin comments now state the version actually pinned. The SHA is
   the security control, but the comment is the only part a human reads,
   so a wrong one hides a stale pin from every review — how
