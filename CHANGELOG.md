@@ -20,6 +20,7 @@
 
 ### Fixed
 
+- ethos config resolves layered again so the engineering team, seeded pipelines and the claude leader identity resolve alongside the vendored gstack team
 - Require `mcp>=2`: the server imports `mcp.server.mcpserver.MCPServer`
   (mcp 2.x only), but the constraint still permitted mcp 1.x, so a resolver
   could install an incompatible 1.x and break the import at runtime.
