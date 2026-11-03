@@ -9,6 +9,9 @@
 
 ### Changed
 
+- Vendor the gstack ethos team under `.punt-labs/ethos/` and set
+  `resolution: repo-only`, so a fresh clone resolves its ethos identities
+  without the retired team-registry submodule or a global store.
 - Migrate MCP server from `FastMCP` (mcp 1.x) to `MCPServer` (mcp 2.x).
   The `mcp.server.fastmcp.FastMCP` entry point was removed in mcp 2.0;
   the server now constructs `MCPServer(name, version=...)` and no longer
