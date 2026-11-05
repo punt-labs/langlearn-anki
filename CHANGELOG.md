@@ -7,16 +7,11 @@
 - Clear 1 open Dependabot alert (critical, GHSA-6q48-6c7w-9gw2) by bumping
   certifi 2026.1.4 → 2026.10.23 in `uv.lock`.
 
-### Removed
-
-- Remove ethos from this repo: run `ethos disable` (drops the `CLAUDE.md`
-  import and the enabled marker), then delete the dormant
-  `.punt-labs/ethos/` tree, `.punt-labs/ethos.yaml`, the delegation section
-  in `CLAUDE.md`, the ethos skill permissions in `.claude/settings.json`,
-  and the ethos `.gitignore` rules.
-
 ### Changed
 
+- Vendor the gstack ethos team under `.punt-labs/ethos/` and set
+  `resolution: repo-only`, so a fresh clone resolves its ethos identities
+  without the retired team-registry submodule or a global store.
 - Migrate MCP server from `FastMCP` (mcp 1.x) to `MCPServer` (mcp 2.x).
   The `mcp.server.fastmcp.FastMCP` entry point was removed in mcp 2.0;
   the server now constructs `MCPServer(name, version=...)` and no longer
@@ -25,6 +20,7 @@
 
 ### Fixed
 
+- ethos config resolves layered again so the engineering team, seeded pipelines and the claude leader identity resolve alongside the vendored gstack team
 - Require `mcp>=2`: the server imports `mcp.server.mcpserver.MCPServer`
   (mcp 2.x only), but the constraint still permitted mcp 1.x, so a resolver
   could install an incompatible 1.x and break the import at runtime.
